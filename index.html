@@ -486,6 +486,8 @@ function moveNoButtonRandomly() {
   });
 }
 
+noButton.addEventListener("mouseover", moveNoButtonRandomly);
+noButton.addEventListener("click", moveNoButtonRandomly);
 let hoverCount = 0;
 
 noButton.addEventListener("mouseover", () => {
@@ -500,10 +502,6 @@ noButton.addEventListener("mouseover", () => {
     alert("اگه تونستی بزن نه 😐😂❤️");
   }
 });
-
-
-
-noButton.addEventListener("click", moveNoButtonRandomly);
 
 function animate() {
   updateRibbon();
