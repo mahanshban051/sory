@@ -459,32 +459,25 @@ yesButton.addEventListener("click", () => {
 
 // ✅ رفتار جدید برای دکمه No
 function moveNoButtonRandomly() {
-  const minDisplacement = 100;
-  const maxDisplacement = 500;
-  const getRandomDisplacement = (min, max) => {
-    let d = Math.random() * (max - min) + min;
-    return Math.random() < 0.5 ? -d : d;
-  };
+  if (!isMobile()) return; // اگر دسکتاپ هست، کاری نکن
 
   const rect = noButton.getBoundingClientRect();
   const vw = window.innerWidth - rect.width;
   const vh = window.innerHeight - rect.height;
 
-  let x = getRandomDisplacement(minDisplacement, maxDisplacement);
-  let y = getRandomDisplacement(minDisplacement, maxDisplacement);
+  const getRandom = (min, max) => (Math.random() * (max - min) + min) * (Math.random() < 0.5 ? -1 : 1);
+
+  let x = getRandom(100, 500);
+  let y = getRandom(100, 500);
 
   if (rect.left + x < 0) x = Math.abs(x);
   if (rect.right + x > vw) x = -Math.abs(x);
   if (rect.top + y < 0) y = Math.abs(y);
   if (rect.bottom + y > vh) y = -Math.abs(y);
 
-  gsap.to(noButton, {
-    x: `+=${x}`,
-    y: `+=${y}`,
-    duration: 0.2,
-    ease: "power2.out"
-  });
+  gsap.to(noButton, { x: `+=${x}`, y: `+=${y}`, duration: 0.2, ease: "power2.out" });
 }
+
 
 noButton.addEventListener("mouseover", moveNoButtonRandomly);
 let clickCount = 0;
