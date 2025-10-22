@@ -487,6 +487,22 @@ function moveNoButtonRandomly() {
 }
 
 noButton.addEventListener("mouseover", moveNoButtonRandomly);
+let hoverCount = 0;
+
+noButton.addEventListener("mouseover", () => {
+  hoverCount++;
+  moveNoButtonRandomly();
+
+  if (hoverCount === 1) {
+    alert(" نه نداریم بزن آره ❤️😄");
+  } else if (hoverCount === 3) {
+    alert(" دیگه قول میدم آدم همین صفحع شاهده❤️🥲 ");
+  } else if (hoverCount === 5) {
+    alert(" اگه تونستی بزن نه 😐😂❤️ ");
+  }
+});
+
+
 noButton.addEventListener("click", moveNoButtonRandomly);
 
 function animate() {
