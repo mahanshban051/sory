@@ -486,22 +486,24 @@ function moveNoButtonRandomly() {
   });
 }
 
-noButton.addEventListener("mouseover", moveNoButtonRandomly);
-noButton.addEventListener("click", moveNoButtonRandomly);
-let hoverCount = 0;
+n// اگر میخوای وقتی موس روی دکمه میره، جابجا بشه
+oButton.addEventListener("mouseover", moveNoButtonRandomly);
+
+let clickCount = 0;
 
 noButton.addEventListener("click", () => {
-  hoverCount++;
-  moveNoButtonRandomly();
+  clickCount++;
+  moveNoButtonRandomly(); // جابجایی دکمه بعد از هر کلیک
 
-  if (hoverCount === 1) {
+  if (clickCount === 1) {
     alert("نه نداریم بزن آره ❤️😄");
-  } else if (hoverCount === 3) {
+  } else if (clickCount === 3) {
     alert("دیگه قول میدم آدم همین صفحه شاهده❤️🥲");
-  } else if (hoverCount === 5) {
+  } else if (clickCount === 5) {
     alert("اگه تونستی بزن نه 😐😂❤️");
   }
 });
+
 
 function animate() {
   updateRibbon();
